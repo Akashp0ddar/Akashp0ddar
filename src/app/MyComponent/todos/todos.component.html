@@ -1,0 +1,16 @@
+<div class="container">
+  <h1 class="text-center mb-3">This is a header by akash</h1>
+  <h4>Your Todo</h4>
+  <app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+  <div *ngIf="this.todos.length === 0; else elseBlock">No todos available.</div>
+  <ng-template #elseBlock>
+    <div *ngFor="let todo of todos; index as i">
+      <app-todo-item
+        [todo]="todo"
+        [i]="i"
+        (todoDelete)="deleteTodo($event)"
+        (todoCheckBox)="toogleTodo($event)"
+      ></app-todo-item>
+    </div>
+  </ng-template>
+</div>
